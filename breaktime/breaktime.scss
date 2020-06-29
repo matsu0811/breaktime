@@ -1,0 +1,534 @@
+@charset "utf-8";
+$black: #555;
+$yellow: #efcd9a;
+
+$screen-xl: 1199px;
+$screen-l: 991px;
+$screen-md: 767px;
+$screen-s: 575px;
+$screen-xs: 320px;
+$bp-list: (
+  xs: screen and
+    (
+      max-width: #{$screen-xs},
+    ),
+  s: screen and
+    (
+      max-width: #{$screen-s},
+    ),
+  md: screen and
+    (
+      max-width: #{$screen-md},
+    ),
+  l: screen and
+    (
+      max-width: #{$screen-l},
+    ),
+  xl: screen and
+    (
+      max-width: #{$screen-xl},
+    ),
+) !default;
+@mixin media($bp-key) {
+  @media #{map-get($bp-list, $bp-key)} {
+    @content;
+  }
+}
+
+body {
+  margin: 0;
+  width: 100vw;
+  background-color: white;
+}
+
+.contents {
+  width: 80%;
+  margin: 30px auto;
+  @include media(md) {
+    width: 100%;
+  }
+}
+
+// header
+
+header {
+  nav {
+    height: 39px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0;
+
+    @include media(s) {
+      position: fixed;
+      top: 0;
+      background-color: rgba(255, 255, 255, 0.7);
+      margin: 0;
+    }
+
+    .nav-left {
+      display: inline-block;
+      margin: 0;
+      @include media(s) {
+        order: 2;
+        width: 100%;
+        text-align: right;
+        padding-right: 10px;
+      }
+
+      img {
+        margin: 0;
+        display: inline-block;
+        vertical-align: -10px;
+      }
+
+      h1 {
+        display: inline-block;
+        color: $black;
+
+        font: {
+          family: "arial";
+          weight: bold;
+          size: 25px;
+        }
+
+        letter-spacing: 2px;
+        padding-left: 10px;
+        margin: 0;
+
+        @include media(l) {
+          font-size: 20px;
+          padding-left: 5px;
+        }
+        @include media(md) {
+          font-size: 16px;
+          padding-left: 3px;
+        }
+
+        @include media(xs) {
+          font-size: 12px;
+          padding-left: 0;
+        }
+      }
+    }
+
+    .nav-right {
+      display: inline-block;
+      margin: 0;
+      @include media(s) {
+        order: 1;
+      }
+
+      .toggle {
+        width: 28px;
+        height: 30px;
+        display: none;
+        margin-top: 5px;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        margin-left: 10px;
+
+        @include media(s) {
+          display: inline-block;
+        }
+
+        div {
+          width: 100%;
+          height: 5px;
+          background: $black;
+          margin: 4px auto;
+          transition: all 0.3s;
+          backface-visibility: hidden;
+        }
+
+        &.on .one {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        &.on .two {
+          opacity: 0;
+        }
+
+        &.on .three {
+          transform: rotate(-45deg) translate(7px, -8px);
+        }
+      }
+
+      ul {
+        list-style: none;
+        display: flex;
+        justify-content: flex-end;
+
+        @include media(s) {
+          display: none;
+          padding-left: 15px;
+        }
+
+        &.add {
+          background-color: rgba(255, 255, 255, 0.7);
+          margin: 0;
+
+          a {
+            display: inline-block;
+            &:hover {
+              transform: scale(1.3);
+            }
+          }
+        }
+
+        li {
+          margin-right: 30px;
+          padding-top: 5px;
+
+          @include media(l) {
+            margin-right: 14px;
+          }
+
+          &:hover {
+            opacity: 0.5;
+
+            @include media(s) {
+              opacity: 1;
+            }
+          }
+
+          a {
+            text-decoration: none;
+            color: $black;
+
+            font: {
+              family: "arial";
+              size: 20px;
+            }
+
+            letter-spacing: 6px;
+            @include media(l) {
+              font-size: 15px;
+              letter-spacing: 3px;
+            }
+          }
+
+          span {
+            color: $yellow;
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+// header end
+
+// top
+
+.top {
+  margin: 30px auto;
+  width: 100%;
+  overflow: hidden;
+  @include media(s) {
+    margin-top: 40px;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+// top end
+
+.main {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  @include media(md) {
+    display: block;
+  }
+}
+
+// sidebar
+
+.sidebar {
+  width: 33%;
+  margin-right: 30px;
+  display: inline-block;
+
+  @include media(md) {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .banner {
+    margin-bottom: 20px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &.banner1 {
+      width: 100%;
+      @include media(md) {
+        display: inline-block;
+      }
+
+      img {
+        width: 100%;
+        @include media(md) {
+          width: 95%;
+        }
+      }
+    }
+    &.banner2 {
+      width: 100%;
+      @include media(md) {
+        display: inline-block;
+      }
+
+      img {
+        width: 100%;
+        @include media(md) {
+          width: 95%;
+        }
+      }
+    }
+    &.banner3 {
+      @include media(md) {
+        display: none;
+      }
+    }
+  }
+}
+
+// sidebar end
+
+.main-contents {
+  width: 77%;
+  display: inline-block;
+}
+
+// concept
+
+.concept {
+  width: 100%;
+  vertical-align: top;
+  margin-bottom: 150px;
+
+  @include media(md) {
+    margin-bottom: 30px;
+  }
+  @include media(s) {
+    margin-top: -150px;
+    padding-top: 150px;
+  }
+
+  h3 {
+    color: $black;
+    border-bottom: 4px solid $yellow;
+    margin: 0;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+
+    font: {
+      family: "arial";
+      weight: bold;
+      size: 30px;
+    }
+
+    letter-spacing: 4px;
+
+    span {
+      color: $yellow;
+    }
+
+    @include media(md) {
+      font-size: 25px;
+    }
+  }
+
+  p {
+    margin-top: 10px;
+
+    font: {
+      family: "ヒラギノ明朝 Pro";
+
+      size: 15px;
+    }
+  }
+}
+
+//  concept end
+
+// menu
+
+.menu {
+  width: 100%;
+  overflow: hidden;
+  @include media(s) {
+    margin-top: -150px;
+    padding-top: 150px;
+  }
+
+  h3 {
+    color: $black;
+    border-bottom: 4px solid $yellow;
+    margin: 0;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+
+    font: {
+      family: "arial";
+      weight: bold;
+      size: 30px;
+    }
+
+    letter-spacing: 22px;
+
+    span {
+      color: $yellow;
+    }
+    @include media(md) {
+      font-size: 25px;
+    }
+  }
+
+  img {
+    width: 100%;
+    margin-top: 10px;
+    padding: 0;
+  }
+}
+
+// menu end
+
+// footer
+
+footer {
+  height: 322px;
+  width: 100%;
+
+  margin: 0 0;
+  background-color: #bfbfbf;
+
+  @include media(md) {
+    height: 100%;
+  }
+
+  .footer-contents {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+
+    @include media(md) {
+      display: block;
+    }
+
+    .footer-left {
+      display: inline-block;
+      margin: 0;
+
+      @include media(md) {
+        display: block;
+      }
+
+      img {
+        margin-top: 30px;
+        display: inline-block;
+        vertical-align: -10px;
+      }
+
+      h3 {
+        display: inline-block;
+        color: $black;
+
+        font: {
+          family: "arial";
+          weight: bold;
+          size: 25px;
+        }
+
+        letter-spacing: 2px;
+        padding-left: 10px;
+        margin: 0;
+
+        @include media(md) {
+          font-size: 20px;
+          padding-left: 5px;
+        }
+      }
+
+      p {
+        margin-bottom: 20px;
+        padding: 0;
+
+        font: {
+          family: "小塚ゴシック Pr6N";
+
+          size: 20px;
+        }
+
+        span {
+          font-size: 15px;
+          @include media(md) {
+            font-size: 10px;
+          }
+        }
+
+        &:first-child {
+          margin-top: 0;
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
+        @include media(md) {
+          font-size: 15px;
+        }
+      }
+    }
+
+    .footer-right {
+      display: inline-block;
+      margin: 0;
+
+      @include media(md) {
+        display: block;
+      }
+
+      h3 {
+        color: $black;
+        margin: 30px auto;
+
+        font: {
+          family: "arial";
+          weight: bold;
+          size: 30px;
+        }
+
+        letter-spacing: 5px;
+
+        span {
+          color: $yellow;
+        }
+        @include media(md) {
+          font-size: 25px;
+        }
+      }
+
+      .access {
+        img {
+          margin: 0;
+          padding: 0;
+          max-width: 100%;
+          @include media(md) {
+            margin-bottom: 30px;
+          }
+        }
+      }
+    }
+  }
+}
